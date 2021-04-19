@@ -1,0 +1,53 @@
+{
+  "name": "Office365WebDesktop",
+  "version": "1.0.0",
+  "description": "It is a simple desktop application for Office365 of the web version for linux",
+  "main": "./src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --linux snap"
+  },
+  "repository": "https://github.com/rafgui12/office365webdesktop.git",
+  "keywords": [
+    "Office",
+    "desktopApp",
+    "start",
+    "WebApp",
+    "Word",
+    "Excel",
+    "Power Point",
+    "Offi365",
+    "Linux"
+  ],
+  "author": {
+    "name": "Rafael Angulo Ealo",
+    "email": "info@rafgui.com"
+  },
+  "license": "MIT",
+  "build": {
+    "appId": "com.rafgui.${name}",
+    "asar": true,
+    "copyright": "MIT ©2021 Rafgui012.",
+    "linux": {
+      "category": "Office;Productivity",
+      "packageCategory": "Office;Productivity",
+      "description": "It is a simple desktop application for Office365 of the web version for linux",
+      "synopsis": "Office365 Desktop WebVievApp",
+      "icon": "./src/images/icon.icns",
+      "target": [
+        "dir",
+        "snap"
+      ],
+      "maintainer": "Rafgui012 <info@rafgui.com>",
+      "artifactName": "${name}-${version}-${arch}.${ext}"
+    }
+  },
+  "snap": {
+    "confinement": "strict",
+    "grade": "stable"
+  },
+  "devDependencies": {
+    "electron": "^12.0.4",
+    "electron-builder": "^22.9.1"
+  }
+}
