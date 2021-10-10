@@ -47,8 +47,8 @@
     "grade": "beta"
   },
   "devDependencies": {
-    "electron": "^12.0.4",
-    "electron-builder": "^22.9.1"
+    "electron": "^15.1.2",
+    "electron-builder": "^22.11.7"
   },
   "dependencies": {
     "@anujdatar/appconfig": "^2.2.0"

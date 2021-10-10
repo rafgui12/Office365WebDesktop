@@ -1,14 +1,17 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const { session } = require('electron')
 
 // define app defaults
 const appDefaults = {
   homepage: 'https://www.office.com/',
+  secondpage: 'https://www.office.com/?auth=1',
 }
 
 // global reference of the window object
 let mainWindow
+const ses = session
 
 function createWindow () {
   // Create the browser window.
@@ -25,11 +28,20 @@ function createWindow () {
   })
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
+  //mainWindow.webContents.openDevTools()
 
   // Open the mainWindow
-  mainWindow.loadURL(appDefaults.homepage)
-
+  ses.defaultSession.cookies.get({ name: 'JSHP'})
+  .then((cookies) => {
+    if(cookies == 0){
+      mainWindow.loadURL(appDefaults.homepage)
+    }else{
+      mainWindow.loadURL(appDefaults.secondpage)
+    }
+  }).catch((error) => {
+    console.log(error)
+  })
+  //mainWindow.loadURL(appDefaults.homepage)
 }
 
 // This method will be called when Electron has finished
@@ -38,10 +50,14 @@ function createWindow () {
 app.whenReady().then(() => {
   createWindow()
 
+  //ses.defaultSession.clearStorageData()
+  //console.log("SEsion",ses.defaultSession)
+
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
+
   })
 })
 
@@ -49,7 +65,9 @@ app.whenReady().then(() => {
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') app.quit()
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })
 
 // In this file you can include the rest of your app's specific main process
