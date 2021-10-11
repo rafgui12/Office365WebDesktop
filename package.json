@@ -1,6 +1,6 @@
 {
   "name": "Office365WebDesktop",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "It is a simple desktop application for Office365 of the web version for linux",
   "main": "./src/main.js",
   "scripts": {
