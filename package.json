@@ -41,6 +41,12 @@
       ],
       "maintainer": "Rafgui012 <info@rafgui.com>",
       "artifactName": "${name}-${version}-${arch}.${ext}"
+    },
+    "win": {
+      "target":"nsis",
+      "icon": "./src/images/icon.ico",
+      "publisherName": "Rafgui012 <info@rafgui.com>",
+      "artifactName": "${name}-${version}-${arch}.${ext}"
     }
   },
   "snap": {
