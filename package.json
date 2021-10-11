@@ -1,12 +1,12 @@
 {
   "name": "Office365WebDesktop",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "description": "It is a simple desktop application for Office365 of the web version for linux",
   "main": "./src/main.js",
   "scripts": {
     "start": "electron .",
     "distLinux": "electron-builder --linux snap",
-    "distWin": "electron-builder --windows"
+    "distWin": "electron-builder --win portable"
   },
   "repository": "https://github.com/rafgui12/office365webdesktop.git",
   "keywords": [
