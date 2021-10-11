@@ -5,7 +5,8 @@
   "main": "./src/main.js",
   "scripts": {
     "start": "electron .",
-    "dist": "electron-builder --linux snap"
+    "distLinux": "electron-builder --linux snap",
+    "distWin": "electron-builder --windows"
   },
   "repository": "https://github.com/rafgui12/office365webdesktop.git",
   "keywords": [
@@ -48,7 +49,7 @@
   },
   "devDependencies": {
     "electron": "^15.1.2",
-    "electron-builder": "^22.11.7"
+    "electron-builder": "~22.10.5"
   },
   "dependencies": {
     "@anujdatar/appconfig": "^2.2.0"

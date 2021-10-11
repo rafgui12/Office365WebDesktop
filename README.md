@@ -11,9 +11,9 @@ Para poder instalar esta aplicación en linux es necesario snap, en las distribu
 
 ## Como instalar
 
-Se puede instalar el paquete de Snap directamente desde Snap Store con el siguiente comando
+Se puede instalar el paquete de [Snap](https://snapcraft.io/office365webdesktop) directamente desde Snap Store con el siguiente comando
 
-    $ snap install 
+    $ sudo snap install office365webdesktop --beta
 
 ## Ejecutando el entorno de desarrollo
 
