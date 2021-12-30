@@ -1,5 +1,5 @@
 {
-  "name":"Office365WebDesktop",
+  "name": "Office365WebDesktop",
   "version": "0.6.3",
   "description": "It is a simple desktop application for Office365 of the web version for linux",
   "main": "./src/main.js",
@@ -43,7 +43,7 @@
       "artifactName": "${name}-${version}-${arch}.${ext}"
     },
     "win": {
-      "target":"nsis",
+      "target": "nsis",
       "icon": "./src/images/icon.ico",
       "publisherName": "Rafgui012 <info@rafgui.com>",
       "artifactName": "${name}-${version}-${arch}.${ext}"
@@ -54,7 +54,7 @@
     "grade": "beta"
   },
   "devDependencies": {
-    "electron": "^15.1.2",
+    "electron": "^15.3.4",
     "electron-builder": "~22.10.5"
   },
   "dependencies": {
