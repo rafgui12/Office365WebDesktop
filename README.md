@@ -43,3 +43,10 @@ This project is licensed under the MIT License - see [LICENSE](https://github.co
 
 **Office365** or **Office 365** the name, website, images/icons and code are the intellectual properties of [Microsoft](https://www.microsoft.com/), [Office365](https://www.office.com/).
 
+## Donaciones 
+
+Este proyecto es para todos y nunca sin importar las mejoras tendrá un costo, pero dejo este espacio para todos los que quieran a poyar a este proyecto y todo lo donado será para las mejoras y el equipo para la mejor experiencia sobre este proyecto. 
+
+[![Donate with PayPal](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/donate/?business=TZ7BBQZ9TQFR4&no_recurring=0&item_name=The+donated+will+be+for+the+improvements+and+the+equipment+for+the+best+experience+on+this+project.&currency_code=USD)
+
+
