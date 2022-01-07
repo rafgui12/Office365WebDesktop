@@ -1,6 +1,6 @@
 {
   "name": "Office365WebDesktop",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "It is a simple desktop application for Office365 of the web version for linux",
   "main": "./src/main.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "Word",
     "Excel",
     "Power Point",
-    "Offi365",
+    "Office365",
     "Linux"
   ],
   "author": {
@@ -33,7 +33,7 @@
       "category": "Office;Productivity",
       "packageCategory": "Office;Productivity",
       "description": "It is a simple desktop application for Office365 of the web version for linux",
-      "synopsis": "Office365 Desktop WebVievApp",
+      "synopsis": "Office365 Desktop WebViewApp",
       "icon": "./src/images/icon.icns",
       "target": [
         "dir",

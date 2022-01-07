@@ -10,7 +10,6 @@ const appDefaults = {
 }
 
 // global reference of the window object
-let mainWindow
 const ses = session
 
 function createWindow () {
@@ -23,7 +22,9 @@ function createWindow () {
     height: 640,
     webPreferences: {
       nodeIntegration: false,
-      contextIsolation: true
+      contextIsolation: true,
+      popup: false,
+      spellcheck: true
     }
   })
 
@@ -42,6 +43,25 @@ function createWindow () {
     console.log(error)
   })
   //mainWindow.loadURL(appDefaults.homepage)
+  mainWindow.webContents.on('new-window', function(e, url) {
+    //console.log(url)
+    const urlForb = [
+      'https://outlook.com/',
+      'https://onedrive.live.com/',
+      'https://teams.live.com/_?utm_source=OfficeWeb',
+      'https://www.onenote.com/notebooks?auth=1',
+      'https://to-do.microsoft.com/tasks/?auth=1',
+      'https://account.microsoft.com/family',
+      'https://outlook.live.com/calendar/', 
+      'https://web.skype.com/?source=owa'
+    ]
+    for(let i = 0 ; i < urlForb.length; i++) {
+      if(url === urlForb[i]){
+        e.preventDefault();
+        require('electron').shell.openExternal(urlForb[i]); 
+      }
+    }
+  });
 }
 
 // This method will be called when Electron has finished
@@ -51,15 +71,15 @@ app.whenReady().then(() => {
   createWindow()
 
   //ses.defaultSession.clearStorageData()
-  //console.log("SEsion",ses.defaultSession)
+
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
-
   })
 })
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
