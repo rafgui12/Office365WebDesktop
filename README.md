@@ -12,11 +12,12 @@ Para poder instalar esta aplicación en linux es necesario _[snap](https://snapc
 
 ## Como instalar
 
-Se puede instalar el paquete de [Snap](https://snapcraft.io/office365webdesktop) directamente desde Snap Store con el siguiente comando
+Se puede instalar el paquete de [![office365webdesktop](https://snapcraft.io/office365webdesktop/badge.svg)](https://snapcraft.io/office365webdesktop)
+ directamente desde Snap Store con el siguiente comando
 
     $ sudo snap install office365webdesktop --beta
 
-para windows descargas el archivo .exe de nuestro _[***Release***](https://github.com/rafgui12/Office365WebDesktop/releases/tag/VersionB0.6.3)_ y ejecutas el programa portable  
+para windows descargas el archivo .exe de nuestro _[***Release***](https://github.com/rafgui12/Office365WebDesktop/releases/tag/VersionB0.7.0)_ y ejecutas el programa portable  
 
 ## Ejecutando el entorno de desarrollo
 
