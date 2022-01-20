@@ -1,6 +1,6 @@
 {
   "name": "Office365WebDesktop",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "It is a simple desktop application for Office365 of the web version for linux",
   "main": "./src/main.js",
   "scripts": {
@@ -54,10 +54,11 @@
     "grade": "beta"
   },
   "devDependencies": {
-    "electron": "^15.3.4",
+    "electron": "^15.3.5",
     "electron-builder": "~22.10.5"
   },
   "dependencies": {
-    "@anujdatar/appconfig": "^2.2.0"
+    "@anujdatar/appconfig": "^2.2.0",
+    "internet-available": "^1.0.0"
   }
 }

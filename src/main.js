@@ -1,7 +1,7 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
-const { session } = require('electron')
+const {app, BrowserWindow, session, shell} = require('electron');
+var internetAvailable = require("internet-available");
+const path = require('path');
 
 // define app defaults
 const appDefaults = {
@@ -31,36 +31,47 @@ function createWindow () {
   // Open the DevTools.
   //mainWindow.webContents.openDevTools()
 
-  // Open the mainWindow
-  ses.defaultSession.cookies.get({ name: 'JSHP'})
-  .then((cookies) => {
-    if(cookies == 0){
-      mainWindow.loadURL(appDefaults.homepage)
-    }else{
-      mainWindow.loadURL(appDefaults.secondpage)
-    }
-  }).catch((error) => {
-    console.log(error)
-  })
-  //mainWindow.loadURL(appDefaults.homepage)
-  mainWindow.webContents.on('new-window', function(e, url) {
-    //console.log(url)
-    const urlForb = [
-      'https://outlook.com/',
-      'https://onedrive.live.com/',
-      'https://teams.live.com/_?utm_source=OfficeWeb',
-      'https://www.onenote.com/notebooks?auth=1',
-      'https://to-do.microsoft.com/tasks/?auth=1',
-      'https://account.microsoft.com/family',
-      'https://outlook.live.com/calendar/', 
-      'https://web.skype.com/?source=owa'
-    ]
-    for(let i = 0 ; i < urlForb.length; i++) {
-      if(url === urlForb[i]){
-        e.preventDefault();
-        require('electron').shell.openExternal(urlForb[i]); 
+  console.log("Status");
+
+  // Set a timeout and a limit of attempts to check for connection
+  internetAvailable({
+    timeout: 4000,
+    retries: 10,
+  }).then(function(){
+    //console.log("Internet available");
+    // Open the mainWindow
+    ses.defaultSession.cookies.get({ name: 'JSHP'})
+    .then((cookies) => {
+      if(cookies == 0){
+        mainWindow.loadURL(appDefaults.homepage)
+      }else{
+        mainWindow.loadURL(appDefaults.secondpage)
       }
-    }
+    }).catch((error) => {
+      console.log(error)
+    })
+    //mainWindow.loadURL(appDefaults.homepage)
+    mainWindow.webContents.on('new-window', function(e, url) {
+      const urlForb = [
+        'https://outlook.com/',
+        'https://teams.live.com/_?utm_source=OfficeWeb',
+        'https://to-do.microsoft.com/tasks/?auth=1',
+        'https://account.microsoft.com/family',
+        'https://outlook.live.com/calendar/', 
+        'https://web.skype.com/?source=owa'
+        /*'https://onedrive.live.com/',
+        'https://www.onenote.com/notebooks?auth=1', */
+      ]
+      for(let i = 0 ; i < urlForb.length; i++) {
+        if(url === urlForb[i]){
+          e.preventDefault();
+          shell.openExternal(urlForb[i]); 
+        }
+      }
+    });
+  }).catch(function(){
+    console.log("No internet");
+    mainWindow.loadFile('src/public/pages/nointernet.html')
   });
 }
 
@@ -76,7 +87,9 @@ app.whenReady().then(() => {
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the
     // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow()
+    }
   })
 })
 
