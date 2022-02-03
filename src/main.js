@@ -53,12 +53,12 @@ function createWindow () {
     //mainWindow.loadURL(appDefaults.homepage)
     mainWindow.webContents.on('new-window', function(e, url) {
       const urlForb = [
-        'https://outlook.com/',
-        'https://teams.live.com/_?utm_source=OfficeWeb',
-        'https://to-do.microsoft.com/tasks/?auth=1',
+        'https://outlook.com/', // Corregir el corrector de ortografico
+        'https://teams.live.com/_?utm_source=OfficeWeb', // Abrir en el navegador o la app directa
+        'https://to-do.microsoft.com/tasks/?auth=1', 
         'https://account.microsoft.com/family',
-        'https://outlook.live.com/calendar/', 
-        'https://web.skype.com/?source=owa'
+        'https://outlook.live.com/calendar/', //Corregir el corrector de ortografico
+        'https://web.skype.com/?source=owa' // Abrir en el navegador o la app directa
         /*'https://onedrive.live.com/',
         'https://www.onenote.com/notebooks?auth=1', */
       ]

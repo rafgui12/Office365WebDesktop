@@ -1,0 +1,9 @@
+name: Office365WebDesktop
+summary: Visualise storage utilisation.
+description: |
+    "It is a simple desktop application for 
+    Office365 of the web version for linux",
+version: 0.7.1
+icon: src/images/icon.png
+grade: beta
+confinement: strict
