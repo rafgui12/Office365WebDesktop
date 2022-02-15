@@ -54,11 +54,10 @@
     "grade": "beta"
   },
   "devDependencies": {
-    "electron": "^15.3.5",
+    "electron": "^15.3.7",
     "electron-builder": "~22.10.5"
   },
   "dependencies": {
-    "@anujdatar/appconfig": "^2.2.0",
-    "internet-available": "^1.0.0"
+    "@anujdatar/appconfig": "^2.2.0"
   }
 }

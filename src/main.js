@@ -1,6 +1,5 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, session, shell} = require('electron');
-var internetAvailable = require("internet-available");
 const path = require('path');
 
 // define app defaults
@@ -27,51 +26,38 @@ function createWindow () {
       spellcheck: true
     }
   })
-
+  
   // Open the DevTools.
   //mainWindow.webContents.openDevTools()
-
-  console.log("Status");
-
-  // Set a timeout and a limit of attempts to check for connection
-  internetAvailable({
-    timeout: 4000,
-    retries: 10,
-  }).then(function(){
-    //console.log("Internet available");
-    // Open the mainWindow
-    ses.defaultSession.cookies.get({ name: 'JSHP'})
-    .then((cookies) => {
-      if(cookies == 0){
-        mainWindow.loadURL(appDefaults.homepage)
-      }else{
-        mainWindow.loadURL(appDefaults.secondpage)
+  // Open the mainWindow
+  ses.defaultSession.cookies.get({ name: 'JSHP'})
+  .then((cookies) => {
+    if(cookies == 0){
+      mainWindow.loadURL(appDefaults.homepage)
+    }else{
+      mainWindow.loadURL(appDefaults.secondpage)
+    }
+  }).catch((error) => {
+    console.log(error)
+  })
+  //mainWindow.loadURL(appDefaults.homepage)
+  mainWindow.webContents.on('new-window', function(e, url) {
+    const urlForb = [
+      'https://outlook.com/', // Corregir el corrector de ortografico
+      'https://teams.live.com/_?utm_source=OfficeWeb', // Abrir en el navegador o la app directa
+      'https://to-do.microsoft.com/tasks/?auth=1', 
+      'https://account.microsoft.com/family',
+      'https://outlook.live.com/calendar/', //Corregir el corrector de ortografico
+      'https://web.skype.com/?source=owa' // Abrir en el navegador o la app directa
+      /*'https://onedrive.live.com/',
+      'https://www.onenote.com/notebooks?auth=1', */
+    ]
+    for(let i = 0 ; i < urlForb.length; i++) {
+      if(url === urlForb[i]){
+        e.preventDefault();
+        shell.openExternal(urlForb[i]); 
       }
-    }).catch((error) => {
-      console.log(error)
-    })
-    //mainWindow.loadURL(appDefaults.homepage)
-    mainWindow.webContents.on('new-window', function(e, url) {
-      const urlForb = [
-        'https://outlook.com/', // Corregir el corrector de ortografico
-        'https://teams.live.com/_?utm_source=OfficeWeb', // Abrir en el navegador o la app directa
-        'https://to-do.microsoft.com/tasks/?auth=1', 
-        'https://account.microsoft.com/family',
-        'https://outlook.live.com/calendar/', //Corregir el corrector de ortografico
-        'https://web.skype.com/?source=owa' // Abrir en el navegador o la app directa
-        /*'https://onedrive.live.com/',
-        'https://www.onenote.com/notebooks?auth=1', */
-      ]
-      for(let i = 0 ; i < urlForb.length; i++) {
-        if(url === urlForb[i]){
-          e.preventDefault();
-          shell.openExternal(urlForb[i]); 
-        }
-      }
-    });
-  }).catch(function(){
-    console.log("No internet");
-    mainWindow.loadFile('src/public/pages/nointernet.html')
+    }
   });
 }
 
