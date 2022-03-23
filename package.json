@@ -54,7 +54,7 @@
     "grade": "beta"
   },
   "devDependencies": {
-    "electron": "^15.3.7",
+    "electron": "^15.4.1",
     "electron-builder": "~22.10.5"
   },
   "dependencies": {
