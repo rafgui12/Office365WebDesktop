@@ -3,12 +3,7 @@ summary: Visualise storage utilisation.
 description: |
     "It is a simple desktop application for 
     Office365 of the web version for linux",
-base: core18
 version: 0.7.1
 icon: src/images/icon.png
-grade: devel
-confinement: devmode
-parts:
-    myself:
-        source: https://github.com/gavinbarnard/Office365WebDesktop.git
-        plugin: nil
+grade: beta
+confinement: strict
