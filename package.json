@@ -54,10 +54,11 @@
     "grade": "beta"
   },
   "devDependencies": {
-    "electron": "^15.4.1",
-    "electron-builder": "~22.10.5"
+    "electron": "^22.0.0",
+    "electron-builder": "^22.10.3"
   },
   "dependencies": {
-    "@anujdatar/appconfig": "^2.2.0"
+    "@anujdatar/appconfig": "^2.2.0",
+    "electron-context-menu": "^3.6.1"
   }
 }
