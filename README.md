@@ -24,7 +24,7 @@ para windows descargas el archivo .exe de nuestro _[***Release***](https://githu
 puedes ejecutar el proyecto, clonando el repositorio y desde tu directorio local escribiendo los comandos
 
     $ git clone https://github.com/rafgui12/Office365WebDesktop.git
-    $ cd office365webdesktop
+    $ cd Office365WebDesktop
     $ npm install
     $ npm start
     
